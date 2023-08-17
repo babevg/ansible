@@ -1,0 +1,45 @@
+#filebeat.inputs:
+#- type: log
+#  enabled: true
+#  paths:
+#      - /var/log/nginx/*access.log
+#  fields:
+#    type: nginx_access
+#  fields_under_root: true
+#  scan_frequency: 5s
+
+#- type: log
+#  enabled: true
+#  paths:
+#      - /var/log/nginx/*error.log
+#  fields:
+#    type: nginx_error
+#  fields_under_root: true
+#  scan_frequency: 5s
+
+#output.logstash:
+#  hosts: ["10.8.0.3:5044"]
+
+output.elasticsearch:
+  hosts: ["https://10.8.0.3:9200"]
+  username: "elastic"
+  password: "-NLNNp4XzfKONwOG6dG5"
+  ssl:
+    verification_mode: none
+    enabled: true
+    ca_trusted_finerprint: "11:99:33:BE:50:05:46:AF:A7:87:21:42:46:1D:AF:E7:43:6B:59:A2:1E:AD:C2:33:10:E3:BD:7C:83:C3:3D:AA"
+
+setup.kibana:
+  host: "http://158.160.77.227:5601"
+
+# ============================== Filebeat modules ==============================
+
+filebeat.config.modules:
+  # Glob pattern for configuration loading
+  path: ${path.config}/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: false
+
+  # Period on which files under path should be checked for changes
+  #reload.period: 10s

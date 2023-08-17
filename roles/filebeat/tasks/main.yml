@@ -2,3 +2,8 @@
   apt:
     deb: http://10.8.0.1/filebeat-8.7.0-amd64.deb
     state: present
+
+- name: Copy Config
+  ansible.builtin.copy:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
