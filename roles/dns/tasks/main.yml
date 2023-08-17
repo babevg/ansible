@@ -1,0 +1,8 @@
+- name: Install BIND
+  package:
+    name: 
+      - bind9
+      - bind9utils
+      - bind9-doc
+      - bind9-host
+    state: latest

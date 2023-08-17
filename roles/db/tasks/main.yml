@@ -1,0 +1,33 @@
+- name: Copy GPG key for PG repo
+  ansible.builtin.apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    keyring: /etc/apt/trusted.gpg.d/postgresql.gpg
+    state: present
+
+- name: Add PG repo
+  ansible.builtin.apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main"
+    filename: pgdg
+
+- name: Install PG
+  package:
+    name:
+      - postgresql-12
+      - postgresql-client-12
+    state: latest
+
+- name: Copy GPG key for PGAdmin repo
+  ansible.builtin.apt_key:
+    url: https://www.pgadmin.org/static/packages_pgadmin_org.pub
+    keyring: /etc/apt/trusted.gpg.d/pgadmin.gpg
+    state: present
+
+- name: Add PGAdmin repo
+  ansible.builtin.apt_repository:
+    repo: "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/{{ ansible_distribution_release }} pgadmin4 main"
+    filename: pgadmin4
+
+- name: Install PGAdmin
+  package: 
+    name: pgadmin4
+    state: latest

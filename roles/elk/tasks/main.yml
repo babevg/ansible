@@ -1,0 +1,31 @@
+- name: Install Elasticsearch
+  apt:
+    deb: http://10.8.0.1/elasticsearch-8.7.0-amd64.deb
+    state: present
+
+- name: Enable Elasticsearch service
+  ansible.builtin.service:
+    name: elasticsearch
+    enabled: yes
+    state: started
+
+- name: Install Kibana
+  apt:
+    deb: http://10.8.0.1/kibana-8.7.0-amd64.deb
+    state: present
+
+- name: Enable Kibana service
+  ansible.builtin.service:
+    name: kibana
+    enabled: yes
+
+- name: Install Logstash
+  apt:
+    deb: http://10.8.0.1/logstash-8.7.0-amd64.deb
+    state: present
+
+- name: Enable logstash service
+  ansible.builtin.service:
+    name: logstash
+    enabled: yes
+    state: started

@@ -1,0 +1,37 @@
+- name: Install Nginx
+  package:
+    name: nginx
+    state: latest
+
+- name: Install Apache
+  package:
+    name: apache2
+    state: latest
+
+- name: Install Apache FastCGI
+  apt:
+    deb: https://mirrors.edge.kernel.org/ubuntu/pool/multiverse/liba/libapache-mod-fastcgi/libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb
+    state: present
+
+- name: Install PHP
+  package:
+    name:
+      - php
+      - php-fpm
+      - libapache2-mod-php
+      - php-curl
+      - php-mysql
+      - php-memcached
+      - php-pgsql
+      - php-gd
+      - php-imagick
+      - php-intl
+      - php-xml
+      - php-mbstring
+      - php-zip
+    state: latest
+
+- name: Install MySQL
+  package:
+    name: mysql-server
+    state: latest

@@ -1,0 +1,4 @@
+- name: Install Filebeat
+  apt:
+    deb: http://10.8.0.1/filebeat-8.7.0-amd64.deb
+    state: present

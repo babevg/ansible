@@ -1,0 +1,35 @@
+- name: Install Postfix
+  package:
+    name: postfix
+    state: latest
+
+- name: Install Dovecot
+  package:
+    name:
+      - dovecot-core
+      - dovecot-imapd
+      - dovecot-pop3d
+      - dovecot-lmtpd
+    state: latest
+
+- name: Install Roundcude
+  package:
+    name:
+      - mysql-server
+      - roundcube
+    state: latest
+
+- name: Install ClamAV
+  package:
+    name:
+      - clamav-daemon
+      - clamav
+      - clamsmtp
+    state: latest
+
+- name: Install Spam Assassin
+  package:
+    name:
+      - spamassassin
+      - spamc
+    state: latest

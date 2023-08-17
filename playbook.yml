@@ -1,0 +1,16 @@
+---
+- hosts: all
+  roles:
+  - common
+
+- hosts: 10.8.0.2
+  roles:
+  - dns
+  - filebeat
+  - mail
+  - web
+
+- hosts: 10.8.0.3
+  roles:
+  - db
+  - elk
